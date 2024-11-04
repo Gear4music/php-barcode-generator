@@ -3,20 +3,11 @@ language: php
 php:
   - 5.6
   - 7.0
-  - hhvm
 
 sudo: false
 
 before_script:
-  - >
-    export COMPOSER_AUTH=`printf '{"http-basic": {"g4m.jfrog.io": {"username": "travis-ro", "password": "tIu3Nnxz42Bti7fPm2ErkPTagbMB63pqT"}}}'`
   - composer install --no-interaction --prefer-source
 
 script:
   - vendor/bin/phpunit
-
-deploy:
-  provider: script
-  script: ./composer-package-deploy.sh
-  on:
-    tags: true
